@@ -123,6 +123,8 @@ https://localhost:<port>/swagger
 dotnet test
 ```
 ## 📝 Sample of Json requests used for testing APIs
+
+```
 -- Customer Table
 CREATE TABLE Customers (
     Id INT IDENTITY(1,1) PRIMARY KEY,     -- Unique Identifier (auto-incremented)
@@ -159,7 +161,7 @@ CREATE TABLE OrderProducts (
     CONSTRAINT FK_OrderProducts_Orders FOREIGN KEY (OrderId) REFERENCES Orders(Id),
     CONSTRAINT FK_OrderProducts_Products FOREIGN KEY (ProductId) REFERENCES Products(Id)
 );
-
+```
 
 
 ---
