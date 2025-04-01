@@ -7,8 +7,8 @@ This is a RESTful API built using **.NET Core**, **Entity Framework Core**, and 
 ## 🚀 Features
 
 - Manage **Customers** (Create, Retrieve)
-- Manage **Products** (Create, Retrieve)
 - Manage **Orders** (Create, Retrieve, Update Status)
+- Manage **Products** (Create, Retrieve)
 - **Validation** using Fluent Validation
 - **Swagger Documentation** for API testing
 - **Code-First Approach** with EF Core migrations
@@ -47,7 +47,7 @@ ECommerceAPI/
 ### 🔹 Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/ECommerceAPI.git
+git clone https://github.com/mehofwzy/E-commerceAPI.git
 cd ECommerceAPI
 ```
 
@@ -88,18 +88,20 @@ https://localhost:<port>/swagger
 - **GET** `/api/customers` → Retrieve all customers
 - **POST** `/api/customers` → Create a new customer
 - **GET** `/api/customers/{id}` → Get details of a specific customer
+  
+### **Order Management**
 
+- **POST** `/api/orders` → Create a new order
+- **GET** `/api/orders/{id}` → Get details of an order
+- **POST** `/api/UpdateOrderStatus/{id}` → Update order status to "Delivered"
+  
 ### **Product Management**
 
 - **GET** `/api/products` → Retrieve all products
 - **POST** `/api/products` → Add a new product
 - **GET** `/api/products/{id}` → Get details of a product
 
-### **Order Management**
 
-- **POST** `/api/orders` → Create a new order
-- **GET** `/api/orders/{id}` → Get details of an order
-- **POST** `/api/UpdateOrderStatus/{id}` → Update order status to "Delivered"
 
 ---
 
@@ -125,14 +127,14 @@ dotnet test
 
 ## 📜 License
 
-This project is licensed under the **MIT License**.
+This project is made by Eng.Mohamed Fawzy - .NET Software Developer
 
 ---
 
 ## 📌 Author
 
-Developed by **Your Name**
+Developed by **Mohamed Fawzy**
 
-- 📧 Email: [your-email@example.com](mailto\:your-email@example.com)
-- 🌐 Portfolio: [your-portfolio.com](https://your-portfolio.com)
+- 📧 Email: [mehofawzy@outlook.com](mailto\:mehofawzy@outlook.com)
+- 🌐 Portfolio: [linkedin.com/in/mehofwzy](https://linkedin.com/in/mehofwzy)
 
