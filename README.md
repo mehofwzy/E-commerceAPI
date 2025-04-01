@@ -128,15 +128,13 @@ dotnet test
 ## 📝 Sample of Json requests used for testing APIs
 
 ```
---Customers
-
+------------------------Customers--------------------------------
 1- Get All Customers (Initially empty)
 (GET http://localhost:<port>/api/customers)
 
-- Expected Response:
+-Expected Response:
 []
-
-
+---------------------------
 2- Create a New Customer
 (POST http://localhost:<port>/api/customers)
 
@@ -153,10 +151,9 @@ dotnet test
     "email": "Mohamed@example.com",
     "phone": "1234567890"
 }
-
+---------------------------
 3- Get a Customer by ID
 (GET http://localhost:<port>/api/customers/1)
-
 
 -Expected Response:
 {
@@ -166,9 +163,7 @@ dotnet test
     "phone": "1234567890"
 }
 
-
---Orders
-
+------------------------Orders--------------------------------
 1- Create a New Order
 (POST http://localhost:<port>/api/orders)
 
@@ -187,11 +182,11 @@ dotnet test
     "totalPrice": 2100.49,
     "products": [1, 2]
 }
-
+---------------------------
 2- Get Order Details by ID
 (GET http://localhost:<port>/api/orders/1)
 
-Expected Response:
+-Expected Response:
 {
     "orderId": 1,
     "customerName": "John Doe",
@@ -199,7 +194,7 @@ Expected Response:
     "numberOfProducts": 2,
     "totalPrice": 2100.49
 }
-
+---------------------------
 3- Update Order Status to Delivered
 (POST http://localhost:<port>/api/UpdateOrderStatus/1)
 
@@ -210,7 +205,7 @@ Expected Response:
 ```
 
 ---
-## 📅 Sample of Json requests used for testing APIs
+## 📅 Database Schema - ECommerceDB
 
 ```
 -- Customer Table
@@ -251,7 +246,6 @@ CREATE TABLE OrderProducts (
 );
 ```
 
-
 ---
 
 ## 📜 License
@@ -265,5 +259,6 @@ This project is made by Eng.Mohamed Fawzy - .NET Software Developer
 Developed by **Mohamed Fawzy**
 
 - 📧 Email: [mehofawzy@outlook.com](mailto\:mehofawzy@outlook.com)
-- 🌐 Portfolio: [linkedin.com/in/mehofwzy](https://linkedin.com/in/mehofwzy)
+- 📞 Phone: [+201095194149]
+- 🌐 linkedIn: [linkedin.com/in/mehofwzy](https://linkedin.com/in/mehofwzy)
 
