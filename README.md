@@ -122,7 +122,95 @@ https://localhost:<port>/swagger
 ```sh
 dotnet test
 ```
+
+---
+
 ## 📝 Sample of Json requests used for testing APIs
+
+```
+--Customers
+
+1- Get All Customers (Initially empty)
+(GET http://localhost:<port>/api/customers)
+
+- Expected Response:
+[]
+
+
+2- Create a New Customer
+(POST http://localhost:<port>/api/customers)
+
+-Request Body:
+{
+    "name": "Mohamed Fawzy",
+    "email": "Mohamed@example.com",
+    "phone": "1234567890"
+}
+-Expected Response (201 Created):
+{
+    "id": 1,
+    "name": "Mohamed Fawzy",
+    "email": "Mohamed@example.com",
+    "phone": "1234567890"
+}
+
+3- Get a Customer by ID
+(GET http://localhost:<port>/api/customers/1)
+
+
+-Expected Response:
+{
+    "id": 1,
+    "name": "Mohamed Fawzy",
+    "email": "Mohamed@example.com",
+    "phone": "1234567890"
+}
+
+
+--Orders
+
+1- Create a New Order
+(POST http://localhost:<port>/api/orders)
+
+-Request Body:
+{
+    "customerId": 1,
+    "products": [1, 2]
+}
+
+-Expected Response:
+{
+    "id": 1,
+    "customerId": 1,
+    "orderDate": "2025-04-01T12:00:00Z",
+    "status": "Pending",
+    "totalPrice": 2100.49,
+    "products": [1, 2]
+}
+
+2- Get Order Details by ID
+(GET http://localhost:<port>/api/orders/1)
+
+Expected Response:
+{
+    "orderId": 1,
+    "customerName": "John Doe",
+    "orderStatus": "Pending",
+    "numberOfProducts": 2,
+    "totalPrice": 2100.49
+}
+
+3- Update Order Status to Delivered
+(POST http://localhost:<port>/api/UpdateOrderStatus/1)
+
+-Expected Response:
+{
+    "message": "Order status updated to Delivered"
+}
+```
+
+---
+## 📅 Sample of Json requests used for testing APIs
 
 ```
 -- Customer Table
