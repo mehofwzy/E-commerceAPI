@@ -122,6 +122,45 @@ https://localhost:<port>/swagger
 ```sh
 dotnet test
 ```
+## 📝 Sample of Json requests used for testing APIs
+-- Customer Table
+CREATE TABLE Customers (
+    Id INT IDENTITY(1,1) PRIMARY KEY,     -- Unique Identifier (auto-incremented)
+    Name NVARCHAR(100) NOT NULL,            -- Full Name of the customer
+    Email NVARCHAR(100) NOT NULL UNIQUE,    -- Email (must be unique)
+    Phone NVARCHAR(20) NOT NULL             -- Phone number
+);
+
+-- Product Table
+CREATE TABLE Products (
+    Id INT IDENTITY(1,1) PRIMARY KEY,      -- Unique Identifier (auto-incremented)
+    Name NVARCHAR(100) NOT NULL,            -- Name of the product
+    Description NVARCHAR(500) NULL,         -- Description of the product
+    Price DECIMAL(18, 2) NOT NULL,          -- Price of the product
+    Stock INT NOT NULL                      -- Available stock for the product
+);
+
+-- Order Table
+CREATE TABLE Orders (
+    Id INT IDENTITY(1,1) PRIMARY KEY,      -- Unique Identifier (auto-incremented)
+    CustomerId INT NOT NULL,                -- Reference to Customer
+    OrderDate DATETIME NOT NULL,            -- Date when the order was placed
+    Status NVARCHAR(20) NOT NULL DEFAULT 'Pending', -- Order Status (default is 'Pending')
+    TotalPrice DECIMAL(18, 2) NOT NULL,     -- Total Price of the Order
+    CONSTRAINT FK_Orders_Customers FOREIGN KEY (CustomerId) REFERENCES Customers(Id)
+);
+
+-- Order_Product Table (Many-to-Many relationship between Orders and Products)
+CREATE TABLE OrderProducts (
+    OrderId INT NOT NULL,                  -- Reference to Order
+    ProductId INT NOT NULL,                -- Reference to Product
+    Quantity INT NOT NULL,                 -- Quantity of the product in the order
+    PRIMARY KEY (OrderId, ProductId),      -- Composite primary key
+    CONSTRAINT FK_OrderProducts_Orders FOREIGN KEY (OrderId) REFERENCES Orders(Id),
+    CONSTRAINT FK_OrderProducts_Products FOREIGN KEY (ProductId) REFERENCES Products(Id)
+);
+
+
 
 ---
 
