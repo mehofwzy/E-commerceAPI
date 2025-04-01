@@ -1,37 +1,29 @@
-E-Commerce API
+# E-Commerce API
 
-📌 Overview
+## 📌 Overview
 
-This is a RESTful API built using .NET Core, Entity Framework Core, and Fluent Validation for managing products, customers, and orders in an e-commerce application.
+This is a RESTful API built using **.NET Core**, **Entity Framework Core**, and **Fluent Validation** for managing products, customers, and orders in an e-commerce application.
 
-🚀 Features
+## 🚀 Features
 
-Manage Customers (Create, Retrieve)
+- Manage **Customers** (Create, Retrieve)
+- Manage **Products** (Create, Retrieve)
+- Manage **Orders** (Create, Retrieve, Update Status)
+- **Validation** using Fluent Validation
+- **Swagger Documentation** for API testing
+- **Code-First Approach** with EF Core migrations
 
-Manage Orders (Create, Retrieve, Update Status)
+## 🛠️ Technologies Used
 
-Manage Products (Create, Retrieve)
+- .NET Core 7/8
+- Entity Framework Core
+- Fluent Validation
+- SQL Server
+- Swagger (Swashbuckle)
 
-Validation using Fluent Validation
+## 📂 Project Structure
 
-Swagger Documentation for API testing
-
-Code-First Approach with EF Core migrations
-
-🛠️ Technologies Used
-
-.NET Core 7/8
-
-Entity Framework Core
-
-Fluent Validation
-
-SQL Server
-
-Swagger (Swashbuckle)
-
-📂 Project Structure
-
+```
 ECommerceAPI/
 │-- ECommerceAPI/          # Main API Project
 │   │-- Controllers/       # API Controllers
@@ -41,254 +33,106 @@ ECommerceAPI/
 │   └── Program.cs         # Entry Point
 │
 └── ECommerceAPI.Tests/    # Unit Testing Project
+```
 
-🏗️ Setup and Installation
+---
 
-🔹 Prerequisites
+## 🏗️ Setup and Installation
 
-.NET SDK 7/8
+### 🔹 Prerequisites
 
-SQL Server
+- .NET SDK 7/8
+- SQL Server
 
-🔹 Clone the Repository
+### 🔹 Clone the Repository
 
-git clone https://github.com/mehofwzy/E-commerceAPI.git
+```sh
+git clone https://github.com/your-username/ECommerceAPI.git
 cd ECommerceAPI
+```
 
-🔹 Install Dependencies
+### 🔹 Install Dependencies
 
+```sh
 dotnet restore
+```
 
-🔹 Database Migration
+### 🔹 Database Migration
 
+```sh
 dotnet ef migrations add InitialCreate
 
 dotnet ef database update
+```
 
-🔹 Run the Application
+### 🔹 Run the Application
 
+```sh
 dotnet run
+```
 
-🔹 Access Swagger Documentation
+### 🔹 Access Swagger Documentation
 
 Open in your browser:
 
+```
 https://localhost:<port>/swagger
+```
 
-📢 API Endpoints
+---
 
-Customer Management
+## 📢 API Endpoints
 
-GET /api/customers → Retrieve all customers
+### **Customer Management**
 
-POST /api/customers → Create a new customer
+- **GET** `/api/customers` → Retrieve all customers
+- **POST** `/api/customers` → Create a new customer
+- **GET** `/api/customers/{id}` → Get details of a specific customer
 
-GET /api/customers/{id} → Get details of a specific customer
+### **Product Management**
 
-Order Management
+- **GET** `/api/products` → Retrieve all products
+- **POST** `/api/products` → Add a new product
+- **GET** `/api/products/{id}` → Get details of a product
 
-POST /api/orders → Create a new order
+### **Order Management**
 
-GET /api/orders/{id} → Get details of an order
+- **POST** `/api/orders` → Create a new order
+- **GET** `/api/orders/{id}` → Get details of an order
+- **POST** `/api/UpdateOrderStatus/{id}` → Update order status to "Delivered"
 
-POST /api/UpdateOrderStatus/{id} → Update order status to "Delivered"
+---
 
-Product Management
+## ✅ HTTP Status Codes
 
-GET /api/products → Retrieve all products
+| Status Code               | Meaning                       |
+| ------------------------- | ----------------------------- |
+| 200 OK                    | Successful response           |
+| 201 Created               | Resource successfully created |
+| 400 Bad Request           | Validation error              |
+| 404 Not Found             | Resource not found            |
+| 500 Internal Server Error | Unexpected server error       |
 
-POST /api/products → Add a new product
+---
 
-GET /api/products/{id} → Get details of a product
+## 🧪 Running Unit Tests
 
-✅ HTTP Status Codes
-
-Status Code
-
-Meaning
-
-200 OK
-
-Successful response
-
-201 Created
-
-Resource successfully created
-
-400 Bad Request
-
-Validation error
-
-404 Not Found
-
-Resource not found
-
-500 Internal Server Error
-
-Unexpected server error
-
-🧪 Running Unit Tests
-
+```sh
 dotnet test
+```
 
-🧪 Sample of Json requests used for testing APIs
+---
 
-## Customers
+## 📜 License
 
-1- Get All Customers (Initially empty)
-(GET http://localhost:<port>/api/customers)
+This project is licensed under the **MIT License**.
 
-- Expected Response:
-[]
+---
 
+## 📌 Author
 
-2- Create a New Customer
-(POST http://localhost:<port>/api/customers)
+Developed by **Your Name**
 
--Request Body:
-{
-    "name": "Mohamed Fawzy",
-    "email": "Mohamed@example.com",
-    "phone": "1234567890"
-}
--Expected Response (201 Created):
-{
-    "id": 1,
-    "name": "Mohamed Fawzy",
-    "email": "Mohamed@example.com",
-    "phone": "1234567890"
-}
-
-3- Get a Customer by ID
-(GET http://localhost:<port>/api/customers/1)
-
-
--Expected Response:
-{
-    "id": 1,
-    "name": "Mohamed Fawzy",
-    "email": "Mohamed@example.com",
-    "phone": "1234567890"
-}
-
-
-## Orders
-
-1- Create a New Order
-(POST http://localhost:<port>/api/orders)
-
--Request Body:
-{
-    "customerId": 1,
-    "products": [1, 2]
-}
-
--Expected Response:
-{
-    "id": 1,
-    "customerId": 1,
-    "orderDate": "2025-04-01T12:00:00Z",
-    "status": "Pending",
-    "totalPrice": 2100.49,
-    "products": [1, 2]
-}
-
-2- Get Order Details by ID
-(GET http://localhost:<port>/api/orders/1)
-
-Expected Response:
-{
-    "orderId": 1,
-    "customerName": "John Doe",
-    "orderStatus": "Pending",
-    "numberOfProducts": 2,
-    "totalPrice": 2100.49
-}
-
-3- Update Order Status to Delivered
-(POST http://localhost:<port>/api/UpdateOrderStatus/1)
-
--Expected Response:
-{
-    "message": "Order status updated to Delivered"
-}
-
-📅 Database Schema - ECommerceDB
-
--- Customer Table
-CREATE TABLE Customers (
-    Id INT IDENTITY(1,1) PRIMARY KEY,     -- Unique Identifier (auto-incremented)
-    Name NVARCHAR(100) NOT NULL,            -- Full Name of the customer
-    Email NVARCHAR(100) NOT NULL UNIQUE,    -- Email (must be unique)
-    Phone NVARCHAR(20) NOT NULL             -- Phone number
-);
-
--- Product Table
-CREATE TABLE Products (
-    Id INT IDENTITY(1,1) PRIMARY KEY,      -- Unique Identifier (auto-incremented)
-    Name NVARCHAR(100) NOT NULL,            -- Name of the product
-    Description NVARCHAR(500) NULL,         -- Description of the product
-    Price DECIMAL(18, 2) NOT NULL,          -- Price of the product
-    Stock INT NOT NULL                      -- Available stock for the product
-);
-
--- Order Table
-CREATE TABLE Orders (
-    Id INT IDENTITY(1,1) PRIMARY KEY,      -- Unique Identifier (auto-incremented)
-    CustomerId INT NOT NULL,                -- Reference to Customer
-    OrderDate DATETIME NOT NULL,            -- Date when the order was placed
-    Status NVARCHAR(20) NOT NULL DEFAULT 'Pending', -- Order Status (default is 'Pending')
-    TotalPrice DECIMAL(18, 2) NOT NULL,     -- Total Price of the Order
-    CONSTRAINT FK_Orders_Customers FOREIGN KEY (CustomerId) REFERENCES Customers(Id)
-);
-
--- Order_Product Table (Many-to-Many relationship between Orders and Products)
-CREATE TABLE OrderProducts (
-    OrderId INT NOT NULL,                  -- Reference to Order
-    ProductId INT NOT NULL,                -- Reference to Product
-    Quantity INT NOT NULL,                 -- Quantity of the product in the order
-    PRIMARY KEY (OrderId, ProductId),      -- Composite primary key
-    CONSTRAINT FK_OrderProducts_Orders FOREIGN KEY (OrderId) REFERENCES Orders(Id),
-    CONSTRAINT FK_OrderProducts_Products FOREIGN KEY (ProductId) REFERENCES Products(Id)
-);
-
-📌 Author
-
-This project is made by Eng.Mohamed Fawzy - .NET Software Developer
-
-📧 Email: mehofawzy@outlook.com
-
-📞 Phone: +201095194149
-
-🌐 linkedIn: linkedin.com/in/mehofwzy
-
-
-📢 API Endpoints
-
-Customer Management
-
-GET /api/customers → Retrieve all customers
-
-POST /api/customers → Create a new customer
-
-GET /api/customers/{id} → Get details of a specific customer
-
-Product Management
-
-GET /api/products → Retrieve all products
-
-POST /api/products → Add a new product
-
-GET /api/products/{id} → Get details of a product
-
-Order Management
-
-POST /api/orders → Create a new order
-
-GET /api/orders/{id} → Get details of an order
-
-POST /api/UpdateOrderStatus/{id} → Update order status to "Delivered"
-
-
-
+- 📧 Email: [your-email@example.com](mailto\:your-email@example.com)
+- 🌐 Portfolio: [your-portfolio.com](https://your-portfolio.com)
 
