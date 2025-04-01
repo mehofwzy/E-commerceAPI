@@ -263,4 +263,32 @@ This project is made by Eng.Mohamed Fawzy - .NET Software Developer
 🌐 linkedIn: linkedin.com/in/mehofwzy
 
 
+📢 API Endpoints
+
+Customer Management
+
+GET /api/customers → Retrieve all customers
+
+POST /api/customers → Create a new customer
+
+GET /api/customers/{id} → Get details of a specific customer
+
+Product Management
+
+GET /api/products → Retrieve all products
+
+POST /api/products → Add a new product
+
+GET /api/products/{id} → Get details of a product
+
+Order Management
+
+POST /api/orders → Create a new order
+
+GET /api/orders/{id} → Get details of an order
+
+POST /api/UpdateOrderStatus/{id} → Update order status to "Delivered"
+
+
+
 
